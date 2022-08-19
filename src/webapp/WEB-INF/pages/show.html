@@ -6,7 +6,42 @@
     <title>Пользователь</title>
 </head>
 <body>
-<p th:text="${user.getName()}">VALUE</p>
-<p th:text="${user.getId()}">VALUE</p>
+<div>
+    <form th:method="GET" th:action="@{/{id}(id=${user.getId()})}">
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.name}">Имя</td>
+        <td th:text="${user.lastName}">Фамилия</td>
+        <td th:text="${user.age}">Возраст</td>
+        <td th:text="${user.email}">E-mail</td>
+        <td>
+            <form th:action="@{/edit/{id}(id=${user.id})}" th:object="${user}">
+                <button type="submit">Изменить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    </form>
+    <form th:action="@{/}">
+        <button type="submit">Назад к списку пользователей</button>
+    </form>
+</div>
 </body>
 </html>

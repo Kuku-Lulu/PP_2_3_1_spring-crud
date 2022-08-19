@@ -14,18 +14,18 @@ public class User {
     private  String lastName;
     @Column(name = "age")
     private byte age;
-    @Column(name = "profession")
-    private String profession;
+    @Column(name = "email")
+    private String email;
 
 
     public User() {
     }
 
-    public User(String name, String lastName, byte age, String profession) {
+    public User(String name, String lastName, byte age, String email) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.profession = profession;
+        this.email = email;
     }
 
     public Long getId() {
@@ -60,12 +60,12 @@ public class User {
         this.age = age;
     }
 
-    public String getProfession() {
-        return profession;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
-                ", profession='" + profession + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

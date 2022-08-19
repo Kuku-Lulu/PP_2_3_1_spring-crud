@@ -1,13 +1,14 @@
 package web.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Component
+@Repository
 public class UserDaoHiberImpl implements UserDao{
 
     @PersistenceContext
@@ -31,11 +32,10 @@ public class UserDaoHiberImpl implements UserDao{
     @Override
     public void updateUser(User user) {
         entityManager.merge(user);
-
     }
-    @SuppressWarnings("unchecked")
+
     @Override
     public List<User> getAllUsers() {
-        return entityManager.createQuery("select u from User u", User.class).getResultList();
+        return entityManager.createQuery("from User", User.class).getResultList();
     }
 }

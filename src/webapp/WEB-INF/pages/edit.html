@@ -7,9 +7,8 @@
 <body>
 <h2>Modify User</h2>
 <div>
-    <form th:method="POST" th:action="@{/edit/{id}(id=${user.getId()})}" th:object="${user}">
+    <form th:method="PATCH" th:action="@{/edit/{id}(id=${user.getId()})}" th:object="${user}">
         <fieldset>
-            <legend>User data</legend>
             <label for="name">name</label>
             <input type="text" th:field="*{name}" id="name" placeholder="name">
             <label for="lastName">lastName</label>

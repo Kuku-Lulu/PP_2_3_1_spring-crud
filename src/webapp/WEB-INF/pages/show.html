@@ -28,13 +28,13 @@
         <td th:text="${user.age}"></td>
         <td th:text="${user.email}"></td>
         <td>
-            <form th:action="@{/edit/{id}(id=${user.getId()})}" th:object="${user}">
-                <button type="submit">Изменить</button>
+            <form th:action="@{/edit/{id}(id=${user.getId()})}">
+                <button type="submit">Modify</button>
             </form>
         </td>
         <td>
-            <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}">
-                <button type="submit">DELETE</button>
+            <form th:method="DELETE" th:action="@{/delete/{id}(id=${user.id})}">
+                <button type="submit">Delete</button>
             </form>
         </td>
         </tr>

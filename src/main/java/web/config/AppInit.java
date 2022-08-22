@@ -3,10 +3,10 @@ package web.config;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import java.io.IOException;
 
-public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer implements Filter{
 
     // Метод, указывающий на класс конфигурации
     @Override
@@ -38,5 +38,8 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         aContext.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter())
                 .addMappingForUrlPatterns(null, true, "/*");
     }
-
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        chain.doFilter(request, response); }
 }
